@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Learner Base · Think. Learn. Thrive.</title>
+  <meta name="description" content="The Learner Base is the parent company of Neural Bridge Campus, building learning brands around personal, curriculum-aligned online teaching.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <style>
+    :root {
+      --navy: #12306a;
+      --blue: #1f4e9a;
+      --teal: #1aa6ae;
+      --coral: #e04438;
+      --coral-dark: #c4352a;
+      --ink: #1b2333;
+      --grey: #5f6878;
+      --rule: #dde2ea;
+      --band: #f3f6f9;
+      --teal-soft: #e6f6f7;
+      --coral-soft: #fdeeec;
+      --sky: #5fb8ff;
+      --sun: #ffc24b;
+
+      --bs-body-font-family: "Outfit", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      --bs-body-font-weight: 400;
+      --bs-body-font-size: 1.125rem;
+      --bs-body-line-height: 1.7;
+      --bs-body-color: var(--ink);
+      --bs-link-color: var(--navy);
+      --bs-link-color-rgb: 18, 48, 106;
+      --bs-link-hover-color-rgb: 224, 68, 56;
+      --bs-border-color: var(--rule);
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4 { font-weight: 400; color: var(--navy); letter-spacing: -0.02em; line-height: 1.12; }
+    h2 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); margin-bottom: 1.5rem; }
+    h3 { font-size: 1.6rem; font-weight: 500; }
+    strong, b { font-weight: 500; }
+    p { max-width: 60ch; }
+    a { text-underline-offset: 4px; text-decoration-thickness: 1px; }
+    img { max-width: 100%; display: block; }
+    :focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+
+    .section { padding-block: clamp(5rem, 10vw, 8.5rem); }
+    .band { background: var(--band); }
+    .label { font-size: 1rem; font-weight: 600; color: var(--teal); margin-bottom: 1.25rem; display: block; }
+    .statement { font-size: clamp(1.45rem, 3.2vw, 2.5rem); font-weight: 400; line-height: 1.35; color: var(--navy); letter-spacing: -0.015em; max-width: 30ch; }
+
+    /* Buttons: thin, rectangular, quiet */
+    .btn { font-weight: 500; border-radius: 6px; padding: .85rem 1.6rem; letter-spacing: .01em; font-size: 1.05rem; }
+    .btn-coral { --bs-btn-bg: var(--coral); --bs-btn-border-color: var(--coral); --bs-btn-color: #fff; --bs-btn-hover-bg: var(--coral-dark); --bs-btn-hover-border-color: var(--coral-dark); --bs-btn-hover-color: #fff; --bs-btn-active-bg: var(--coral-dark); --bs-btn-active-color: #fff; }
+    .btn-navy { --bs-btn-bg: var(--navy); --bs-btn-border-color: var(--navy); --bs-btn-color: #fff; --bs-btn-hover-bg: var(--blue); --bs-btn-hover-border-color: var(--blue); --bs-btn-hover-color: #fff; --bs-btn-active-bg: var(--blue); --bs-btn-active-color: #fff; }
+    .btn-outline { --bs-btn-color: var(--navy); --bs-btn-border-color: var(--navy); --bs-btn-hover-bg: var(--navy); --bs-btn-hover-color: #fff; --bs-btn-hover-border-color: var(--navy); --bs-btn-active-bg: var(--navy); --bs-btn-active-color: #fff; }
+    .btn-white { --bs-btn-bg: #fff; --bs-btn-border-color: #fff; --bs-btn-color: var(--coral-dark); --bs-btn-hover-bg: transparent; --bs-btn-hover-color: #fff; --bs-btn-hover-border-color: #fff; --bs-btn-active-bg: transparent; --bs-btn-active-color: #fff; }
+    .btn-line-white { --bs-btn-color: #fff; --bs-btn-border-color: rgba(255,255,255,.6); --bs-btn-hover-bg: #fff; --bs-btn-hover-color: var(--coral-dark); --bs-btn-hover-border-color: #fff; --bs-btn-active-bg: #fff; --bs-btn-active-color: var(--coral-dark); }
+    .text-link { color: var(--navy); text-decoration: underline; font-weight: 400; }
+    .text-link:hover { color: var(--coral); }
+
+    /* Header */
+    .site-header { background: rgba(255,255,255,.96); border-bottom: 1px solid var(--rule); padding-block: .9rem; }
+    .brand { display: inline-flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .brand img { height: 40px; width: auto; }
+    .brand-text { font-size: 1.3rem; font-weight: 500; color: var(--navy); letter-spacing: -0.01em; line-height: 1; }
+    .site-header .nav-link { color: var(--ink); font-weight: 400; font-size: 1.05rem; padding-inline: 1rem !important; }
+    .site-header .nav-link:hover, .site-header .nav-link.active { color: var(--coral); }
+    .navbar-toggler { border: 0; padding: .5rem; }
+    .navbar-toggler:focus { box-shadow: none; outline: 2px solid var(--coral); }
+    .toggler-lines { display: block; width: 26px; height: 12px; border-top: 1px solid var(--navy); border-bottom: 1px solid var(--navy); }
+    @media (max-width: 991.98px) {
+      .site-header .navbar-collapse { padding-top: 1rem; }
+      .site-header .nav-link { padding: .8rem 0 !important; border-bottom: 1px solid var(--rule); font-size: 1.2rem; }
+    }
+
+    /* Hero */
+    .hero { padding-top: clamp(3.5rem, 8vw, 6rem); }
+    .hero h1 { font-size: clamp(2.2rem, 6.4vw, 5.4rem); font-weight: 400; line-height: 1.04; letter-spacing: -0.035em; margin: 0; max-width: 16ch; }
+    .hero-side { font-size: 1.15rem; color: var(--grey); }
+    .hero-side a { color: var(--navy); }
+
+    /* Triptych: the signature element */
+    .triptych { display: flex; gap: 6px; height: min(72vh, 640px); margin-top: clamp(3rem, 6vw, 4.5rem); }
+    .panel {
+      position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; color: #fff; cursor: pointer;
+      transition: flex-grow .6s cubic-bezier(.3,.7,.2,1); outline-offset: -4px;
+    }
+    .panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .8s ease; }
+    .panel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,22,52,0) 35%, rgba(10,22,52,.78) 100%); }
+    .panel-body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: clamp(1.25rem, 3vw, 2.25rem); }
+    .panel-word { font-size: clamp(2.2rem, 4.6vw, 4rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1; display: block; }
+    .panel-word::after { content: "."; color: var(--teal); }
+    .panel:nth-child(3) .panel-word::after { color: var(--coral); }
+    .panel-text { max-width: 36ch; margin: 1rem 0 0; font-size: 1.05rem; line-height: 1.55; color: rgba(255,255,255,.88); opacity: 0; transform: translateY(8px); transition: opacity .4s ease .15s, transform .4s ease .15s; }
+    .panel.is-open { flex-grow: 2.2; }
+    .panel.is-open img { transform: scale(1.03); }
+    .panel.is-open .panel-text { opacity: 1; transform: none; }
+    @media (max-width: 767.98px) {
+      .triptych { flex-direction: column; height: auto; }
+      .panel { flex: none; height: 300px; cursor: default; }
+      .panel-text { opacity: 1; transform: none; }
+    }
+
+    /* About */
+    .facts { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--rule); }
+    .facts li { padding: 1.5rem 0; border-bottom: 1px solid var(--rule); }
+    .facts h3 { font-size: 1.35rem; margin: 0 0 .35rem; }
+    .facts p { margin: 0; color: var(--grey); font-size: 1.05rem; }
+    .portrait { aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+
+    /* Neural Bridge Campus band */
+    .nbc { background: var(--coral); color: #fff; }
+    .nbc h2 { color: #fff; font-size: clamp(2.8rem, 7vw, 5.8rem); letter-spacing: -0.04em; line-height: 1; margin-bottom: 2rem; }
+    .nbc .label { color: rgba(255,255,255,.8); }
+    .nbc p { color: rgba(255,255,255,.92); font-size: 1.2rem; }
+    .nbc-list { list-style: none; padding: 0; margin: 2.5rem 0; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(255,255,255,.35); }
+    .nbc-list li { padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,.35); font-size: 1.08rem; }
+    .nbc-list li:nth-child(odd) { padding-right: 1.5rem; }
+    @media (max-width: 575.98px) { .nbc-list { grid-template-columns: 1fr; } .nbc-list li:nth-child(odd) { padding-right: 0; } }
+    .nbc-img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; }
+    .nbc-curricula { font-size: 1rem; color: rgba(255,255,255,.85); margin-top: 1.25rem; }
+
+    /* Programmes as a definition list */
+    .programmes { margin: 0; border-top: 1px solid var(--rule); }
+    .programmes .row { padding-block: 1.75rem; border-bottom: 1px solid var(--rule); margin: 0; }
+    .programmes dt { font-weight: 400; font-size: clamp(1.5rem, 2.6vw, 2.1rem); color: var(--navy); letter-spacing: -0.02em; line-height: 1.2; padding-left: 0; }
+    .programmes dd { margin: 0; color: var(--grey); align-self: center; padding-right: 0; }
+    .programmes .row:hover dt { color: var(--coral); }
+
+    /* Steps */
+    .steps { list-style: none; padding: 0; margin: 0; counter-reset: step; }
+    .steps li { counter-increment: step; padding-top: 1.5rem; border-top: 1px solid var(--navy); }
+    .steps li::before { content: counter(step); display: block; font-size: 3.6rem; font-weight: 300; line-height: 1; color: var(--teal); margin-bottom: 1.25rem; }
+    .steps li:last-child::before { color: var(--coral); }
+    .steps h3 { font-size: 1.35rem; margin-bottom: .5rem; }
+    .steps p { color: var(--grey); margin: 0; font-size: 1.05rem; }
+
+    /* Testimonials */
+    .quote-carousel blockquote { font-size: clamp(1.35rem, 3.4vw, 2.6rem); font-weight: 400; line-height: 1.35; color: var(--navy); letter-spacing: -0.015em; margin: 0 0 2rem; max-width: 34ch; }
+    .quote-carousel figcaption { color: var(--grey); font-size: 1.05rem; }
+    .quote-carousel figcaption strong { color: var(--ink); font-weight: 400; }
+    .quote-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 3rem; }
+    .quote-controls button { background: none; border: 0; padding: 0; color: var(--navy); font-size: 1.05rem; font-weight: 500; text-decoration: underline; }
+    .quote-controls button:hover { color: var(--coral); }
+    .quote-count { color: var(--grey); font-size: 1rem; }
+
+    /* Tutors */
+    .tutor-img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; }
+
+    /* FAQ */
+    .faq .accordion { --bs-accordion-bg: transparent; --bs-accordion-border-width: 0; --bs-accordion-btn-focus-box-shadow: none; --bs-accordion-active-bg: transparent; --bs-accordion-active-color: var(--coral); --bs-accordion-btn-padding-x: 0; --bs-accordion-body-padding-x: 0; }
+    .faq .accordion-item { border-bottom: 1px solid var(--rule) !important; }
+    .faq .accordion-item:first-child { border-top: 1px solid var(--rule) !important; }
+    .faq .accordion-button { font-family: inherit; font-weight: 500; font-size: 1.35rem; color: var(--navy); padding-block: 1.5rem; }
+    .faq .accordion-button:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
+    .faq .accordion-button::after { background-image: none; content: "+"; font-size: 1.8rem; font-weight: 300; width: auto; height: auto; line-height: 1; transform: none; }
+    .faq .accordion-button:not(.collapsed)::after { content: "−"; transform: none; }
+    .faq .accordion-body { color: var(--grey); padding-top: 0; padding-bottom: 1.75rem; max-width: 62ch; }
+
+    /* Contact: underline fields */
+    .field { margin-bottom: 1.75rem; }
+    .field label { display: block; font-size: 1rem; color: var(--grey); margin-bottom: .25rem; }
+    .field .form-control, .field .form-select { border: 0; border-bottom: 1px solid #b7c0cd; border-radius: 0; padding: .6rem 0; font-size: 1.15rem; font-weight: 400; background-color: transparent; box-shadow: none; color: var(--ink); }
+    .field .form-select { background-position: right 0 center; }
+    .field .form-control:focus, .field .form-select:focus { border-bottom-color: var(--navy); box-shadow: 0 1px 0 0 var(--navy); }
+    .was-validated .field .form-control:invalid, .was-validated .field .form-select:invalid { border-bottom-color: var(--coral); background-image: none; }
+    .was-validated .field .form-control:valid, .was-validated .field .form-select:valid { border-bottom-color: #b7c0cd; background-image: none; }
+    .invalid-feedback { color: var(--coral); font-size: .95rem; }
+    .form-success { display: none; color: var(--navy); border-left: 2px solid var(--teal); padding: .25rem 0 .25rem 1rem; margin-bottom: 1.5rem; }
+    .form-success.show { display: block; }
+    .contact-lines { list-style: none; padding: 0; margin: 2.5rem 0 0; }
+    .contact-lines li { padding: 1rem 0; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .contact-lines span { color: var(--grey); }
+
+    /* Footer */
+    .site-footer { background: var(--navy); color: rgba(255,255,255,.75); padding-block: 4.5rem 2rem; font-size: 1.02rem; }
+    .site-footer a { color: #fff; text-decoration: none; font-weight: 400; }
+    .site-footer a:hover { text-decoration: underline; }
+    .site-footer h4 { color: rgba(255,255,255,.55); font-size: 1rem; font-weight: 300; margin-bottom: 1rem; letter-spacing: 0; }
+    .site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
+    .footer-brand { display: inline-flex; align-items: center; gap: .75rem; margin-bottom: 1.25rem; }
+    .footer-brand img { height: 46px; background: #fff; padding: 5px 7px; }
+    .footer-brand span { color: #fff; font-size: 1.4rem; font-weight: 500; }
+    .footer-tag { font-size: 1.6rem; font-weight: 400; color: #fff; letter-spacing: -0.01em; }
+    .footer-tag i { font-style: normal; color: var(--teal); }
+    .footer-tag i.c { color: var(--coral); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.18); margin-top: 3.5rem; padding-top: 1.5rem; font-size: .95rem; }
+
+
+    /* =========================================================
+       Colour + mobile refinements
+       ========================================================= */
+    .brand-stripe { height: 4px; background: linear-gradient(90deg, var(--navy) 0 33.33%, var(--teal) 33.33% 66.66%, var(--coral) 66.66% 100%); }
+    .site-header { border-bottom-color: transparent; box-shadow: 0 6px 20px -16px rgba(18,48,106,.5); }
+
+    /* Hero */
+    .hero { background: linear-gradient(180deg, var(--teal-soft) 0%, #ffffff 78%); }
+    .hero-side { border-left: 3px solid var(--coral); padding-left: 1.1rem; color: var(--ink); }
+    .panel { border-radius: 14px; }
+    .panel-body::before { content: ""; display: block; width: 46px; height: 4px; border-radius: 4px; margin-bottom: 1rem; background: var(--teal); }
+    .panel:nth-child(2) .panel-body::before { background: var(--sky); }
+    .panel:nth-child(3) .panel-body::before { background: var(--coral); }
+    .panel:nth-child(2) .panel-word::after { color: var(--sky); }
+
+    /* About facts with coloured markers */
+    .facts li { padding-left: 1.25rem; position: relative; }
+    .facts li::before { content: ""; position: absolute; left: 0; top: 1.85rem; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+    .facts li:nth-child(2)::before { background: var(--blue); }
+    .facts li:nth-child(3)::before { background: var(--coral); }
+
+    /* Programmes on navy */
+    .prog-dark { background: var(--navy); color: #fff; }
+    .prog-dark h2 { color: #fff; }
+    .prog-dark .label { color: var(--teal-300, #6fd9de); }
+    .prog-dark .text-secondary { color: rgba(255,255,255,.72) !important; }
+    .prog-dark .programmes, .prog-dark .programmes .row { border-color: rgba(255,255,255,.16); }
+    .prog-dark .programmes dt { color: #fff; display: flex; align-items: center; gap: .85rem; }
+    .prog-dark .programmes dt::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 50%; background: #6fd9de; }
+    .prog-dark .programmes .row:nth-child(3n+2) dt::before { background: var(--sun); }
+    .prog-dark .programmes .row:nth-child(3n) dt::before { background: var(--coral); }
+    .prog-dark .programmes dd { color: rgba(255,255,255,.75); }
+    .prog-dark .programmes .row { transition: background-color .2s; }
+    .prog-dark .programmes .row:hover { background: rgba(255,255,255,.04); }
+    .prog-dark .programmes .row:hover dt { color: #6fd9de; }
+
+    /* Steps on soft teal with coloured cards */
+    .steps-band { background: var(--teal-soft); }
+    .steps li { border-top: 0; padding-top: 0; }
+    .steps .step-card { background: #fff; border-radius: 16px; padding: 1.6rem; height: 100%; box-shadow: 0 12px 30px -22px rgba(18,48,106,.45); border-top: 4px solid var(--teal); }
+    .steps li:nth-child(2) .step-card { border-top-color: var(--blue); }
+    .steps li:nth-child(3) .step-card { border-top-color: var(--sun); }
+    .steps li:nth-child(4) .step-card { border-top-color: var(--coral); }
+    .steps li::before { display: none; }
+    .step-num { display: block; font-size: 3rem; font-weight: 300; line-height: 1; margin-bottom: 1rem; color: var(--teal); }
+    .steps li:nth-child(2) .step-num { color: var(--blue); }
+    .steps li:nth-child(3) .step-num { color: #e0a21f; }
+    .steps li:nth-child(4) .step-num { color: var(--coral); }
+
+    /* Testimonials on soft coral */
+    .quotes-band { background: var(--coral-soft); }
+    .quotes-band .label { color: var(--coral); }
+    .quote-carousel blockquote { position: relative; }
+    .quote-mark { display: block; font-size: 5.5rem; line-height: .6; color: var(--coral); font-weight: 500; margin-bottom: 1.25rem; height: 2.6rem; }
+    .quote-controls button { color: var(--coral-dark); }
+
+    /* Careers on teal */
+    .careers-band { background: var(--teal); color: #fff; }
+    .careers-band h2 { color: #fff; }
+    .careers-band .label { color: #fff; opacity: .85; }
+    .careers-band .text-secondary { color: rgba(255,255,255,.9) !important; }
+    .careers-band .tutor-img { border-radius: 16px; box-shadow: 0 30px 60px -30px rgba(10,30,60,.6); }
+    .careers-band .btn-navy { --bs-btn-bg: #fff; --bs-btn-border-color: #fff; --bs-btn-color: var(--navy); --bs-btn-hover-bg: var(--navy); --bs-btn-hover-border-color: var(--navy); --bs-btn-hover-color: #fff; }
+
+    /* FAQ accents */
+    .faq .accordion-button:not(.collapsed) { color: var(--coral); }
+    .faq .accordion-button::after { color: var(--teal); }
+
+    /* Contact */
+    .contact-band { background: linear-gradient(135deg, #ffffff 0%, var(--teal-soft) 100%); }
+    .contact-lines li span { color: var(--teal); font-weight: 500; }
+
+    .nbc-img { border-radius: 0; }
+
+    /* ---------- Mobile spacing ---------- */
+    @media (max-width: 767.98px) {
+      body { --bs-body-font-size: 1.05rem; }
+      .section { padding-block: 3.25rem; }
+      .hero { padding-top: 2rem; }
+      .hero h1 { margin-bottom: .5rem; }
+      .hero-side { font-size: 1.05rem; }
+      .row.g-5 { --bs-gutter-y: 1.5rem; }
+      .row.mb-5, .mb-5 { margin-bottom: 1.75rem !important; }
+      .row.mb-4 { margin-bottom: 1rem !important; }
+      h2 { font-size: 2rem; margin-bottom: 1rem; }
+      .label { margin-bottom: .6rem; }
+      .triptych { margin-top: 1.75rem; gap: 8px; }
+      .panel { height: 230px; }
+      .panel-body { padding: 1.1rem 1.2rem; }
+      .panel-body::before { margin-bottom: .6rem; }
+      .panel-word { font-size: 2.1rem; }
+      .panel-text { margin-top: .5rem; font-size: .98rem; }
+      .facts li { padding-block: 1rem; }
+      .facts li::before { top: 1.35rem; }
+      .facts h3 { font-size: 1.2rem; }
+      .nbc .px-4 { padding-block: 2.5rem !important; }
+      .nbc h2 { font-size: 2.6rem; margin-bottom: 1rem; }
+      .nbc p { font-size: 1.05rem; }
+      .nbc-list { margin: 1.5rem 0; }
+      .nbc-list li { padding: .7rem 0; font-size: 1rem; }
+      .nbc-img { min-height: 240px; max-height: 280px; }
+      .programmes .row { padding-block: 1.1rem; }
+      .programmes dt { font-size: 1.35rem; margin-bottom: .25rem; }
+      .programmes dd { font-size: 1rem; }
+      .steps.row.g-5 { --bs-gutter-y: 1rem; }
+      .steps .step-card { padding: 1.25rem; }
+      .step-num { font-size: 2.4rem; margin-bottom: .6rem; }
+      .mt-5 { margin-top: 1.75rem !important; }
+      .quote-mark { font-size: 4rem; height: 2rem; margin-bottom: .75rem; }
+      .quote-controls { margin-top: 1.5rem; }
+      .faq .accordion-button { font-size: 1.12rem; padding-block: 1.1rem; }
+      .field { margin-bottom: 1.25rem; }
+      .contact-lines { margin-top: 1.5rem; }
+      .site-footer { padding-block: 3rem 1.5rem; }
+      .site-footer .row.g-5 { --bs-gutter-y: 1.75rem; }
+      .footer-bottom { margin-top: 2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .001ms !important; animation-duration: .001ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="visually-hidden-focusable position-absolute top-0 start-0 m-2 btn btn-navy" style="z-index:2000" href="#main">Skip to content</a>
+
+  <div class="brand-stripe" aria-hidden="true"></div>
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg sticky-top site-header" aria-label="Main navigation">
+    <div class="container">
+      <a class="brand" href="#top" aria-label="The Learner Base home">
+        <img src="assets/logo-mark.png" alt="" width="55" height="40">
+        <span class="brand-text">The Learner Base</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Open menu"><span class="toggler-lines"></span></button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto me-lg-4">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#brands">Neural Bridge Campus</a></li>
+          <li class="nav-item"><a class="nav-link" href="#programmes">Programmes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#careers">Careers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <a class="btn btn-coral mt-3 mt-lg-0" href="https://www.neuralbridgecampus.com/#book-demo" target="_blank" rel="noopener">Book a free demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="row g-4 align-items-end">
+          <div class="col-lg-8">
+            <h1 id="hero-title">Personal teaching, built into every learning brand we create.</h1>
+          </div>
+          <div class="col-lg-4">
+            <p class="hero-side mb-0">The Learner Base is the parent company of <a href="https://www.neuralbridgecampus.com" target="_blank" rel="noopener">Neural Bridge Campus</a>, delivering one-to-one online tuition for students around the world.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid px-2 px-md-3">
+        <div class="triptych" id="triptych">
+          <article class="panel is-open" tabindex="0" aria-labelledby="p1">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=70" alt="Young students concentrating on schoolwork" fetchpriority="high">
+            <div class="panel-body">
+              <h2 class="panel-word" id="p1">Think</h2>
+              <p class="panel-text">We start by understanding each student: their curriculum, grade, difficult topics and how they learn best.</p>
+            </div>
+          </article>
+          <article class="panel" tabindex="0" aria-labelledby="p2">
+            <img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?auto=format&fit=crop&w=1400&q=70" alt="A student taking a live online lesson on a laptop" loading="lazy">
+            <div class="panel-body">
+              <h2 class="panel-word" id="p2">Learn</h2>
+              <p class="panel-text">Live lessons with a matched subject specialist, at a pace where nothing is rushed and nothing is skipped.</p>
+            </div>
+          </article>
+          <article class="panel" tabindex="0" aria-labelledby="p3">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=70" alt="Graduates throwing their caps in celebration" loading="lazy">
+            <div class="panel-body">
+              <h2 class="panel-word" id="p3">Thrive</h2>
+              <p class="panel-text">Progress checkpoints and parent reports make improvement visible, lesson by lesson, all the way to results day.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-7">
+            <span class="label">About us</span>
+            <h2 id="about-title" class="visually-hidden">About The Learner Base</h2>
+            <p class="statement">We believe students do their best work when someone teaches them, not a crowded room. Every brand we build starts from that idea.</p>
+            <p class="mt-4 text-secondary">The Learner Base creates and runs learning brands. Each one has its own specialism and its own team of tutors, and all of them share the same standards for tutor vetting, curriculum alignment and honest reporting to families.</p>
+          </div>
+          <div class="col-lg-5">
+            <ul class="facts">
+              <li><h3>Vetted specialists</h3><p>Tutors are screened for subject expertise, teaching experience and communication before they meet a student.</p></li>
+              <li><h3>Curriculum first</h3><p>Lessons follow each student's own syllabus, from IB and Cambridge to CBSE and UK entrance exams.</p></li>
+              <li><h3>Visible progress</h3><p>Parents receive attendance records, lesson notes and clear next steps.</p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Neural Bridge Campus -->
+    <section class="nbc" id="brands" aria-labelledby="nbc-title">
+      <div class="container-fluid px-0">
+        <div class="row g-0">
+          <div class="col-lg-6 order-lg-2">
+            <img class="nbc-img" src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?auto=format&fit=crop&w=1400&q=70" alt="Tutor teaching a live online class from a laptop" loading="lazy">
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <div class="px-4 px-md-5 py-5 my-lg-4" style="max-width:720px;margin-left:auto">
+              <span class="label">Our flagship brand</span>
+              <h2 id="nbc-title">Neural Bridge Campus</h2>
+              <p>Premium online tuition for school students. One-to-one and small-group lessons are taught by subject specialists who understand local school expectations, with no registration fee and flexible timings.</p>
+              <ul class="nbc-list">
+                <li>Tutors matched to each child</li>
+                <li>The same tutor every lesson</li>
+                <li>Parent progress reports</li>
+                <li>Weekday, evening and weekend classes</li>
+                <li>Free consultation and demo class</li>
+                <li>Notes, worksheets and revision</li>
+              </ul>
+              <div class="d-flex flex-wrap gap-3">
+                <a class="btn btn-white" href="https://www.neuralbridgecampus.com" target="_blank" rel="noopener">Visit Neural Bridge Campus<span class="visually-hidden"> (opens in a new tab)</span></a>
+                <a class="btn btn-line-white" href="https://www.neuralbridgecampus.com/courses" target="_blank" rel="noopener">View courses</a>
+              </div>
+              <p class="nbc-curricula">IB, IGCSE, A-Levels, CBSE, UK 11+, KS3, IT programming and competitive mathematics.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programmes -->
+    <section class="section prog-dark" id="programmes" aria-labelledby="prog-title">
+      <div class="container">
+        <div class="row g-5 mb-4">
+          <div class="col-lg-6"><span class="label">Programmes</span><h2 id="prog-title" class="mb-0">What our tutors teach</h2></div>
+          <div class="col-lg-5 offset-lg-1 align-self-end"><p class="text-secondary mb-0">All programmes are delivered through Neural Bridge Campus, for students at home and in international schools.</p></div>
+        </div>
+        <dl class="programmes">
+          <div class="row"><dt class="col-md-5">International Baccalaureate</dt><dd class="col-md-7">Subject support across the IB Programme, including past-paper technique for final exams.</dd></div>
+          <div class="row"><dt class="col-md-5">IGCSE &amp; GCSE</dt><dd class="col-md-7">Cambridge and Edexcel syllabuses, from core concepts to exam practice.</dd></div>
+          <div class="row"><dt class="col-md-5">A-Levels</dt><dd class="col-md-7">A-Levels and International A Levels, with focused revision on the hardest topics.</dd></div>
+          <div class="row"><dt class="col-md-5">CBSE</dt><dd class="col-md-7">Lessons aligned to the CBSE syllabus and the school assessment calendar.</dd></div>
+          <div class="row"><dt class="col-md-5">UK 11+ &amp; Key Stage 3</dt><dd class="col-md-7">Entrance exam preparation and KS3 support for students in the UK system.</dd></div>
+          <div class="row"><dt class="col-md-5">IT &amp; programming</dt><dd class="col-md-7">Structured tracks such as Python programming for beginners.</dd></div>
+          <div class="row"><dt class="col-md-5">Competitive mathematics</dt><dd class="col-md-7">Preparation for the International Math Olympiad, Mathematical Kangaroo, AMC and Tournament of the Towns.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Steps -->
+    <section class="section steps-band" aria-labelledby="how-title">
+      <div class="container">
+        <div class="row g-5 mb-5">
+          <div class="col-lg-6"><span class="label">Getting started</span><h2 id="how-title" class="mb-0">From first conversation to first lesson</h2></div>
+          <div class="col-lg-5 offset-lg-1 align-self-end"><p class="text-secondary mb-0">No registration fee and no long commitment before you've met the tutor.</p></div>
+        </div>
+        <ol class="steps row g-5">
+          <li class="col-md-6 col-lg-3"><div class="step-card"><span class="step-num">01</span><h3>Book a free demo</h3><p>Share the student's grade, curriculum and subject on the Neural Bridge Campus form.</p></div></li>
+          <li class="col-md-6 col-lg-3"><div class="step-card"><span class="step-num">02</span><h3>Talk to an advisor</h3><p>A 15-minute academic consultation to understand goals and learning gaps.</p></div></li>
+          <li class="col-md-6 col-lg-3"><div class="step-card"><span class="step-num">03</span><h3>Meet the tutor</h3><p>A trial lesson with a tutor matched to the subject and curriculum.</p></div></li>
+          <li class="col-md-6 col-lg-3"><div class="step-card"><span class="step-num">04</span><h3>Begin the plan</h3><p>Regular lessons on a monthly plan, with progress updates for parents.</p></div></li>
+        </ol>
+        <a class="btn btn-coral mt-5" href="https://www.neuralbridgecampus.com/#book-demo" target="_blank" rel="noopener">Book a free demo</a>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section quotes-band" aria-labelledby="t-title">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-3"><span class="label" id="t-title">From families at Neural Bridge Campus</span></div>
+          <div class="col-lg-9">
+            <div id="quotes" class="carousel slide quote-carousel" data-bs-interval="false" aria-roledescription="carousel" aria-label="Testimonials">
+              <div class="carousel-inner">
+                <figure class="carousel-item active m-0">
+                  <span class="quote-mark" aria-hidden="true">“</span><blockquote>“The tutor identified the exact algebra topics my son was struggling with. His confidence changed within one month.”</blockquote>
+                  <figcaption><strong>Mrs. Al-Kuwari</strong>, parent</figcaption>
+                </figure>
+                <figure class="carousel-item m-0">
+                  <span class="quote-mark" aria-hidden="true">“</span><blockquote>“The lessons were clear and focused on past-paper technique. I improved from a grade 5 to a grade 7 in Physics.”</blockquote>
+                  <figcaption><strong>Yousef M.</strong>, IB student</figcaption>
+                </figure>
+                <figure class="carousel-item m-0">
+                  <span class="quote-mark" aria-hidden="true">“</span><blockquote>“The parent reports are useful and practical. We know what was covered and what needs practice before the next lesson.”</blockquote>
+                  <figcaption><strong>Mrs. Fatima A.</strong>, parent</figcaption>
+                </figure>
+              </div>
+              <div class="quote-controls">
+                <button type="button" data-bs-target="#quotes" data-bs-slide="prev">Previous</button>
+                <span class="quote-count" id="quoteCount" aria-live="polite">1 of 3</span>
+                <button type="button" data-bs-target="#quotes" data-bs-slide="next">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Careers -->
+    <section class="section careers-band" id="careers" aria-labelledby="careers-title">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6">
+            <img class="tutor-img" src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=70" alt="Tutor preparing an online lesson at a desk" loading="lazy">
+          </div>
+          <div class="col-lg-5 offset-lg-1">
+            <span class="label">Careers</span>
+            <h2 id="careers-title">Teach with us</h2>
+            <p class="text-secondary">We're looking for experienced tutors who explain clearly and care about their students' progress. Teach online from anywhere, with students matched to the subjects and curricula you know best.</p>
+            <a class="btn btn-navy mt-3" href="https://www.neuralbridgecampus.com/apply-as-tutor" target="_blank" rel="noopener">Apply as a tutor</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-4"><span class="label">Questions</span><h2 id="faq-title">Good to know</h2></div>
+          <div class="col-lg-8">
+            <div class="accordion" id="faqList">
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q1" aria-expanded="false" aria-controls="q1">How are The Learner Base and Neural Bridge Campus related?</button></h3>
+                <div id="q1" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">The Learner Base is the parent company. Neural Bridge Campus is our online tuition brand, where students book lessons, meet their tutors and attend classes.</div></div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2" aria-expanded="false" aria-controls="q2">Which curricula do your tutors cover?</button></h3>
+                <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">IB, Cambridge and Edexcel IGCSE and A-Levels, CBSE, UK 11+ and Key Stage 3, IT programming, and competitive mathematics.</div></div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3" aria-expanded="false" aria-controls="q3">Are lessons one-to-one or in groups?</button></h3>
+                <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Both formats are available. Each course lists its standard format, and one-to-one plans can be arranged with the support team.</div></div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q4" aria-expanded="false" aria-controls="q4">How do I book a lesson for my child?</button></h3>
+                <div id="q4" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Book a free demo on the <a class="text-link" href="https://www.neuralbridgecampus.com/#book-demo" target="_blank" rel="noopener">Neural Bridge Campus website</a>. You'll get a short consultation, a trial lesson with a matched tutor and a suggested monthly plan.</div></div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q5" aria-expanded="false" aria-controls="q5">Do you work with schools or partners?</button></h3>
+                <div id="q5" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Yes. Schools, education organisations and partners can reach us through the contact form below. Choose "Partnership" as the topic.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact-band" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-5">
+            <span class="label">Contact</span>
+            <h2 id="contact-title">Write to us</h2>
+            <p class="text-secondary">For partnerships, media and general questions about The Learner Base. For lessons and enrolment, please contact Neural Bridge Campus directly.</p>
+            <ul class="contact-lines">
+              <li><span>Email</span><a class="text-link" href="mailto:hello@thelearnerbase.com">hello@thelearnerbase.com</a></li>
+              <li><span>Lessons</span><a class="text-link" href="https://www.neuralbridgecampus.com/contact" target="_blank" rel="noopener">Neural Bridge Campus</a></li>
+              <li><span>Reply time</span>Within one working day</li>
+            </ul>
+          </div>
+          <div class="col-lg-6 offset-lg-1">
+            <form id="contactForm" novalidate>
+              <div class="form-success" id="formSuccess" role="status" aria-live="polite">Message sent. We'll reply within one working day.</div>
+              <div class="row g-0 gx-md-4">
+                <div class="col-md-6 field">
+                  <label for="cName">Full name</label>
+                  <input class="form-control" id="cName" name="name" autocomplete="name" required>
+                  <div class="invalid-feedback">Enter your full name.</div>
+                </div>
+                <div class="col-md-6 field">
+                  <label for="cEmail">Email address</label>
+                  <input class="form-control" id="cEmail" name="email" type="email" autocomplete="email" required>
+                  <div class="invalid-feedback">Enter an email like name@example.com.</div>
+                </div>
+                <div class="col-md-6 field">
+                  <label for="cPhone">Phone (optional)</label>
+                  <input class="form-control" id="cPhone" name="phone" type="tel" autocomplete="tel">
+                </div>
+                <div class="col-md-6 field">
+                  <label for="cTopic">Topic</label>
+                  <select class="form-select" id="cTopic" name="topic" required>
+                    <option value="" selected disabled>Choose a topic</option>
+                    <option>General question</option>
+                    <option>Partnership</option>
+                    <option>Tutoring for my child</option>
+                    <option>Working with us</option>
+                    <option>Media</option>
+                  </select>
+                  <div class="invalid-feedback">Choose a topic.</div>
+                </div>
+                <div class="col-12 field">
+                  <label for="cMessage">Message</label>
+                  <textarea class="form-control" id="cMessage" name="message" rows="4" minlength="10" required></textarea>
+                  <div class="invalid-feedback">Write at least 10 characters.</div>
+                </div>
+              </div>
+              <button class="btn btn-navy" type="submit">Send message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-5">
+          <a class="footer-brand text-decoration-none" href="#top"><img src="assets/logo-mark.png" alt="" width="64" height="46"><span>The Learner Base</span></a>
+          <p class="footer-tag mb-0">Think<i>.</i> Learn<i>.</i> Thrive<i class="c">.</i></p>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <h4>Company</h4>
+          <ul><li><a href="#about">About</a></li><li><a href="#careers">Careers</a></li><li><a href="#faq">Questions</a></li><li><a href="#contact">Contact</a></li></ul>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <h4>Brands</h4>
+          <ul><li><a href="https://www.neuralbridgecampus.com" target="_blank" rel="noopener">Neural Bridge Campus</a></li><li><a href="https://www.neuralbridgecampus.com/courses" target="_blank" rel="noopener">Courses</a></li><li><a href="https://www.neuralbridgecampus.com/#book-demo" target="_blank" rel="noopener">Free demo</a></li></ul>
+        </div>
+        <div class="col-md-4 col-lg-3">
+          <h4>Programmes</h4>
+          <ul><li><a href="#programmes">IB, IGCSE &amp; A-Levels</a></li><li><a href="#programmes">CBSE</a></li><li><a href="#programmes">UK 11+ &amp; KS3</a></li><li><a href="#programmes">Programming &amp; Olympiad</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2">
+        <span>© <span id="year">2026</span> The Learner Base. All rights reserved.</span>
+        <span><a href="https://www.neuralbridgecampus.com/privacy-policy" target="_blank" rel="noopener">Privacy policy</a> &nbsp;/&nbsp; <a href="https://www.neuralbridgecampus.com/terms-and-conditions" target="_blank" rel="noopener">Terms &amp; conditions</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      // Image fallback in brand colours
+      var fallback = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect width="800" height="600" fill="#dfe6ef"/><path d="M400 230 l120 50 -120 50 -120 -50z" fill="#12306a" opacity=".5"/></svg>');
+      function useFallback(img) { if (!img.dataset.fallback) { img.dataset.fallback = '1'; img.removeAttribute('srcset'); img.src = fallback; } }
+      window.addEventListener('error', function (e) { if (e.target && e.target.tagName === 'IMG') useFallback(e.target); }, true);
+      document.querySelectorAll('img').forEach(function (img) { if (img.complete && img.naturalWidth === 0) useFallback(img); });
+
+      // Triptych: hover, focus or tap opens a panel
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
+      function open(p) { panels.forEach(function (x) { x.classList.toggle('is-open', x === p); }); }
+      panels.forEach(function (p) {
+        p.addEventListener('mouseenter', function () { open(p); });
+        p.addEventListener('focus', function () { open(p); });
+        p.addEventListener('click', function () { open(p); });
+        p.addEventListener('keydown', function (e) {
+          var i = panels.indexOf(p);
+          if (e.key === 'ArrowRight' && panels[i + 1]) { panels[i + 1].focus(); e.preventDefault(); }
+          if (e.key === 'ArrowLeft' && panels[i - 1]) { panels[i - 1].focus(); e.preventDefault(); }
+        });
+      });
+
+      // Testimonial counter
+      var car = document.getElementById('quotes');
+      car.addEventListener('slid.bs.carousel', function (e) { document.getElementById('quoteCount').textContent = (e.to + 1) + ' of 3'; });
+
+      // Active nav link
+      var links = Array.prototype.slice.call(document.querySelectorAll('#navMenu .nav-link'));
+      var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+      function onScroll() {
+        var cur = -1;
+        targets.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 120) cur = i; });
+        links.forEach(function (a, i) { a.classList.toggle('active', i === cur); if (i === cur) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // Close mobile menu after a tap
+      var menu = document.getElementById('navMenu');
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { if (menu.classList.contains('show')) bootstrap.Collapse.getOrCreateInstance(menu).hide(); });
+      });
+
+      // Contact form (front-end validation only)
+      var form = document.getElementById('contactForm');
+      var ok = document.getElementById('formSuccess');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        ok.classList.remove('show');
+        if (!form.checkValidity()) {
+          form.classList.add('was-validated');
+          var first = form.querySelector(':invalid');
+          if (first) first.focus();
+          return;
+        }
+        // Connect to your backend or a form service here.
+        form.reset();
+        form.classList.remove('was-validated');
+        ok.classList.add('show');
+        ok.scrollIntoView({ block: 'nearest' });
+      });
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
